@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>BSTech's Specialized Calculator (beta)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans">
+<link rel="stylesheet" href="style.css" />
+<script src="calc.js"></script>
+<script src="ops.js"></script>
+<script src="main.js"></script>
+</head>
+<body oncontextmenu="return false">
+<header>
+<div class="title"><span id="title">Specialized Calculator (beta)</span></div>
+</header>
+
+<nav id="menu">
+<ul class="menu">
+<li bs-func="">Homepage</li>
+<span>Basics</span>
+<li bs-func="OhmsLaw">Ohm's Law</li>
+<span>Resistors</span>
+<li bs-func="Resistors.Series">Series Resistors</li>
+<li bs-func="Resistors.Parallel">Parallel Resistors</li>
+<li bs-func="Resistors.Divider">Resistor Divider</li>
+<span>Capacitors</span>
+<li bs-func="Capacitors.Series">Series Capacitors</li>
+<li bs-func="Capacitors.Parallel">Parallel Capacitors</li>
+<li bs-func="Capacitors.Reactance">Capacitive Reactance</li>
+<span>Inductors</span>
+<li bs-func="Inductors.Series">Series Inductors</li>
+<li bs-func="Inductors.Parallel">Parallel Inductors</li>
+<li bs-func="Inductors.Reactance">Inductive Reactance</li>
+<span>Filters and Resonance</span>
+<li bs-func="Filters.RC">RC Low/High/Band Pass Filter</li>
+<li bs-func="Filters.RL">RL Low/High/Band Pass Filter</li>
+<li bs-func="Osc.LC">LC Tank/Resonator</li>
+<span>Time</span>
+<li bs-func="Time">Frequency/Period Conversation</li>
+<span>Miscellaneous</span>
+<li bs-func="CapDrop">Unregulated Capacitive Dropper <span>(for mains LED lamps etc.)</span></li>
+</ul>
+</nav>
+
+<div id="content">
+<span id="desc" class="desc">Welcome to my weekend project calculator!<br>Select one of the calculators from the menu.<br><span style="font-size: 10pt">This webpage is lightweight and ad-free. No cookies and trackers are used.<br>To report bugs, send me a message on <a target="_blank" href="https://www.reddit.com/user/bstech_">reddit</a> or open an issue on <a target="_blank" href="https://github.com/BSTech/bstech.github.io/issues">github</a> (first one is preferred).<br>Want to donate? Share my page, it is enough for me.<br>You can bookmark this entire page or just a single calculator individually.</br></span></span>
+<span id="desc1" style="display: none;" class="desc">Enter the values except one to find that empty one.</span>
+<span id="desc2" style="display: none;" class="desc">Enter a value to find the result.</span>
+<i id="note" style="display: none;"><b>Note:</b> You can use qualifiers like p, n, u... etc., for example: 470n instead of 0.00000047 - inter-qualifiers are also supported (e.g. 4n7).<br>
+If you need to enter multiple values in a field then separate them with semicolon (;) character. Calculation will fail if the field accepts a single value only.<br>
+<b>Tip:</b> You can press <kbd>Ctrl+Delete</kbd> or <kbd>F2</kbd> to clear all the fields.</i><br>
+
+<div id="ixs" class="input">
+
+<span id="out"></span><span id="result"></span><br>
+<!--<center><i style="font-size: 9pt; color: #eedddd">TEST</i></center>-->
+</div>
+
+</div>
+<footer>
+<center>&copy;2021, BSTech.</center>
+</footer>
+<div style="display: none;" id="copyclone" class="spacer"><span id="in%i">%p</span><input type="text" spellcheck="false" pattern="([0-9.,-]+){1,}([A-Za-z]+)?" id="i%i" onkeyup="textUpdate();" /><span id="inx%i">%d</span><br></div>
+</body>
+
+<script>
+
+</script>
+</html>

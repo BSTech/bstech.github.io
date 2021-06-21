@@ -1,0 +1,142 @@
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #333; }
+::-webkit-scrollbar-thumb { background: #444; }
+::-webkit-scrollbar-thumb:hover { background: #222; }
+
+body
+{
+	font-family: 'Open Sans';
+	font-size: 16pt;
+	margin: 0px;
+	padding: 0px;
+	background: #555;
+	color: white;
+	overflow: hidden;
+	cursor: default;
+	user-select: none;
+}
+
+.title
+{
+	position: relative;
+	top: 0px;
+	left: 0px;
+	background-image: url('logo.png');
+	background-repeat: no-repeat;
+	background-size: 9% 70%;
+	background-position: 0.5% 50%;
+	background-color: #333;
+	width: 100%;
+	height: 5%;
+	overflow: hidden;
+	text-align: center;
+}
+
+#title
+{
+	position: absolute;
+	transform: translate(-50%, 50%);
+}
+
+div#content
+{
+	position: absolute;
+	left: 15%;
+	top: 5%;
+	width: 85%;
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+nav#menu
+{
+	position: absolute;
+	top: 5%;
+	width: 15%;
+	height: 100%;
+	float: left;
+	background: #333;
+	overflow-y: auto;
+	z-index: 1;
+}
+
+ul.menu
+{
+	list-style: none;
+	height: 100%;
+	padding-left: 10px;
+}
+
+ul.menu > li
+{
+	margin-left: 10px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+ul.menu > li:hover { background: #222; }
+ul.menu > span { color: #777; }
+ul.menu > li > span { font-size: 10pt; }
+a { color: white; }
+
+.desc
+{
+	text-align: center;
+	font-size: 24pt;
+}
+
+#note
+{
+	font-size: 10pt;
+	background-color: #996666;
+	border: 1px solid #663333;
+	border-radius: 3px;
+	padding: 10px;
+	text-align: center;
+}
+
+kbd
+{
+	font-size: 10pt;
+	background-color: #333333;
+	border: 1px solid #111111;
+	border-radius: 3px;
+	padding: 2px;
+	text-align: center;
+}
+
+input[type=text]
+{
+	background: #555;
+	border: 1px solid white;
+	border-radius: 5px;
+	font-family: 'Open Sans';
+	font-size: 16pt;
+	margin-left: 10px;
+	margin-right: 10px;
+	color: white;
+	text-align: right;
+}
+
+input[type=text]:focus { outline: none; }
+.spacer { margin-bottom: 10px; text-align: right; }
+
+#result
+{
+	user-select: text;
+	cursor: text;
+	margin-left: 10px;
+}
+
+footer
+{
+	position: fixed;
+	width: 100%;
+	height: 5%;
+	bottom: 0px;
+	background: #333;
+}
+footer > center { transform: translateY(50%); }
