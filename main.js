@@ -73,12 +73,27 @@ function textUpdate()
 			
 			outval.innerText = inputvals[index].innerText;
 			var post = inputxvals[index].innerText;
+			if (post) post = ' ' + post;
 			
-			var val = BSCalc.Execute(findMatch(index), ...vs.filter(x => x));
-			if (val == undefined || isNaN(val)) return;
+			var val = BSCalc.Execute(findMatch(index), ...vs.filter(x => x !== null));
+			if (val == undefined) return;
+			else if (typeof val !== 'object')
+			{
+				if (isNaN(val)) return;
+				
+				var p = BSCalc.EncodeValue(val); val = BSCalc.Expand(val);
+				result.innerHTML = `<b>${fixValType(post, p)}</b> (${val}${post})`;
+				return;
+			}
 			
-			var p = BSCalc.EncodeValue(val); val = BSCalc.Expand(val);
-			result.innerHTML = `<b>${fixValType(post, p)}</b> (${val} ${post})`;
+			var kmap = Object.keys(val);
+			if (kmap.length == 0) return;
+			
+			for (const k of kmap)
+			{
+				var p = BSCalc.EncodeValue(val[k].val); val = BSCalc.Expand(val[k].val);
+				result.innerHTML += `<b>${k}: ${fixValType(' ' + val[k].unit, p)}</b> (${val[k].val}${val[k].unit})<br>`;
+			}
 		}
 	}
 	catch (e) { result.innerHTML = e.message; throw e; }
@@ -119,6 +134,7 @@ function findValueType(x)
 		case 'X': return '&ohm;';
 		case 'f': return 'Hz';
 		case 'T': return 's';
+		case 'A': return 'x';
 	}
 	return x;
 }
@@ -132,7 +148,7 @@ function fixParam(x)
 function fixValType(p, x)
 {
 	if (p == 'Hz/s') { if (typeof x == 'number') return x + p; x = x.split(''); var j = x.splice(-1); x = x.join(''); return `${x}${j}Hz/${j}s`; }
-	return x + p;
+	return x + p.substr(1);
 }
 
 function changeFunction(fn)

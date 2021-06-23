@@ -69,8 +69,64 @@ var BSOperations = {
 			}
 		}
 	},
+	Amps: {
+		OpInverting: {
+			Rf: function(Rin, A) {
+				return Rin * A;
+			},
+			Rin: function(Rf, A) {
+				return Rf / A;
+			},
+			A: function(Rf, Rin) {
+				return Rf / Rin;
+			}
+		},
+		OpNonInverting: {
+			Rf: function(Rin, A) {
+				return Rin * (A - 1);
+			},
+			Rin: function(Rf, A) {
+				return Rf / (A - 1);
+			},
+			A: function(Rf, Rin) {
+				return 1 + (Rf / Rin);
+			}
+		}
+	},
+	Regs: {
+		LM317V: {
+			R1: function(R2, Vout) {
+				return R2 / (Vout / 1.25 - 1);
+			},
+			R2: function(R1, Vout) {
+				return R1 * (Vout / 1.25 - 1);
+			},
+			Vout: function(R1, R2) {
+				return 1.25 * (1 + R2 / R1);
+			}
+		},
+		LM317C: {
+			R: function(I) {
+				return I == 0 ? I : 1.25 / I;
+			},
+			I: function (R) {
+				return R == 0 ? R : 1.25 / R;
+			}
+		},
+		TL431: {
+			R1: function(R2, Vz) {
+				return R2 / (Vz / 2.5 - 1);
+			},
+			R2: function(R1, Vz) {
+				return R1 * (Vz / 2.5 - 1);
+			},
+			Vz: function(R1, R2) {
+				return 2.5 * (1 + R2 / R1);
+			}
+		}
+	},
 	Time: {
-		fT: function(fT) { return 1 / fT; }
+		fT: function(fT) { return fT == 0 ? fT : 1 / fT; }
 	},
 	CapDrop: {
 		Vac: function(f, I, C) { return I * (1 / (2 * Math.PI * f * C)); },
@@ -80,5 +136,5 @@ var BSOperations = {
 	}
 };
 
-var __hash = ['ohms', 'rser', 'rpar', 'rdiv', 'cser', 'cpar', 'crea', 'lser', 'lpar', 'lrea', 'rcpf', 'rlpf', 'lctr', 'time', 'cadp'];
-var __func = ['OhmsLaw', 'Resistors.Series', 'Resistors.Parallel', 'Resistors.Divider', 'Capacitors.Series', 'Capacitors.Parallel', 'Capacitors.Reactance', 'Inductors.Series', 'Inductors.Parallel', 'Inductors.Reactance', 'Filters.RC', 'Filters.RL', 'Osc.LC', 'Time', 'CapDrop'];
+var __hash = ['ohms', 'rser', 'rpar', 'rdiv', 'cser', 'cpar', 'crea', 'lser', 'lpar', 'lrea', 'rcpf', 'rlpf', 'lctr', 'opin', 'opnn', '317v', '317c', '431z', 'time', 'cadp'];
+var __func = ['OhmsLaw', 'Resistors.Series', 'Resistors.Parallel', 'Resistors.Divider', 'Capacitors.Series', 'Capacitors.Parallel', 'Capacitors.Reactance', 'Inductors.Series', 'Inductors.Parallel', 'Inductors.Reactance', 'Filters.RC', 'Filters.RL', 'Osc.LC', 'Amps.OpInverting', 'Amps.OpNonInverting', 'Regs.LM317V', 'Regs.LM317C', 'Regs.TL431', 'Time', 'CapDrop'];
